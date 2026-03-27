@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday 🎉</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    text-align: center;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    color: white;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 45px;
+    margin-top: 20px;
+}
+
+/* Button */
+button {
+    padding: 10px 20px;
+    border: none;
+    background:wheat;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: blanchedalmond;
+}
+
+/* Slideshow */
+.slideshow {
+    width: 60%;
+    margin: 20px auto;
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+/* Popup */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+.popup-content {
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    margin: 10% auto;
+    padding: 20px;
+    width: 300px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.popup-content img {
+    width: 150px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* Balloons */
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 50px;
+    height: 70px;
+    border-radius: 50%;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(-110vh); }
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    top: 0;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+</style>
+
+</head>
+<body>
+
+<h1>🎂 Happy Birthday thammudu 🎉</h1>
+<p>Wishing you lots of love ❤️ love you ra bobby gahhh</p>
+
+<button onclick="showMessage()">Click for Surprise 🎁</button>
+
+<!-- Slideshow -->
+<div class="slideshow">
+    <div class="slide">
+        <img src="C:\Users\MDSG\OneDrive\Pictures\birthday.html\IMG20260308120946.jpg.jpeg">
+    </div>
+    <div class="slide">
+        <img src="C:\Users\MDSG\OneDrive\Pictures\birthday.html\IMG_20260323_080116.jpg.jpeg">
+    </div>
+    <div class="slide">
+        <img src="C:\Users\MDSG\OneDrive\Pictures\birthday.html\IMG2026030812095.jpg.jpeg">
+    </div>
+</div>
+
+<!-- Popup -->
+<div id="birthdayPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>🎂 my luckiest little one 🎉</h2>
+        <img src="C:\Users\MDSG\OneDrive\Pictures\birthday.html\IMG2026030812095.jpg.jpeg">
+        <p>Stay happy always ❤️🔥</p>
+    </div>
+</div>
+
+<!-- Music -->
+<audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-happyrock.mp3">
+</audio>
+
+<script>
+// Popup
+function showMessage() {
+    document.getElementById("birthdayPopup").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("birthdayPopup").style.display = "none";
+}
+
+// Slideshow
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+
+    setTimeout(showSlides, 2500);
+}
+
+// Balloons
+for (let i = 0; i < 10; i++) {
+    let balloon = document.createElement("div");
+    balloon.className = "balloon";
+    balloon.style.left = Math.random() * 100 + "vw";
+    balloon.style.background = `hsl(${Math.random()*360},70%,60%)`;
+    balloon.style.animationDuration = (4 + Math.random()*3) + "s";
+    document.body.appendChild(balloon);
+}
+
+// Confetti
+for (let i = 0; i < 30; i++) {
+    let confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.background = `hsl(${Math.random()*360},100%,50%)`;
+    confetti.style.animationDuration = (3 + Math.random()*3) + "s";
+    document.body.appendChild(confetti);
+}
+</script>
+
+</body>
+</html>
